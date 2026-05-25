@@ -6,6 +6,7 @@ FORCE:
 %: %.c FORCE
 	$(CC) $(CFLAGS) "$<" -o "$@.exe"
 	"./$@.exe"
+	@echo
 
 .PHONY: clean
 

@@ -1,4 +1,5 @@
 SUBDIR = $(notdir $(CURDIR))
+FORCE:
 
-%: %.c
+%: %.c FORCE
 	$(MAKE) -C .. "$(SUBDIR)/$@"
