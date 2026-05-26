@@ -31,7 +31,7 @@ typedef union {
 
 // Write logic here to extract bytes using union
 void print_bytes(uint32_t input) {
-    // Your code here
+    
 }
 
 int main() {

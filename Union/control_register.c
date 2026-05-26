@@ -14,6 +14,19 @@ Your task is to:
         priority must be less than or equal to 2
         reserved must be all 0s
 Return 1 if valid, else return 0.
+
+Example-1
+    Input: 305419896
+    Output: 120 86 52 18
+    (0x12345678 → bytes: 0x78 0x56 0x34 0x12)
+
+Example-2
+    Input: 4294967295
+    Output: 255 255 255 255
+
+Example-3
+    Input: 1
+    Output: 1 0 0 0
 */
 
 #include <stdio.h>
