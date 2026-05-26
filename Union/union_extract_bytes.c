@@ -31,7 +31,11 @@ typedef union {
 
 // Write logic here to extract bytes using union
 void print_bytes(uint32_t input) {
-    
+    Register reg;
+    reg.value = input;
+    for (int i = 0; i < 4; i++) {
+        printf("%d ", reg.bytes[i]);
+    }
 }
 
 int main() {
