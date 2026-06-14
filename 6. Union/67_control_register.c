@@ -1,0 +1,62 @@
+/*
+You are given a control register represented using nested struct bitfields. 
+The register is 8-bit wide and divided into the following layout:
+    Bits	Field	    Description
+    0	    enable	    1 = ON, 0 = OFF
+    1	    mode	    0 = Normal, 1 = Sleep
+    2–3	    priority	2-bit value (0–3)
+    4–7	    reserved	Reserved (must be 0)
+
+Your task is to:
+    Simulate this register using nested struct and bitfields
+    Implement a function that takes a pointer to the register and validates:
+        enable must be 1
+        priority must be less than or equal to 2
+        reserved must be all 0s
+Return 1 if valid, else return 0.
+
+Example-1
+    Input: 305419896
+    Output: 120 86 52 18
+    (0x12345678 → bytes: 0x78 0x56 0x34 0x12)
+
+Example-2
+    Input: 4294967295
+    Output: 255 255 255 255
+
+Example-3
+    Input: 1
+    Output: 1 0 0 0
+*/
+
+#include <stdio.h>
+
+typedef union {
+    unsigned char reg;
+    struct {
+        unsigned char enable : 1;
+        unsigned char mode : 1;
+        unsigned char priority : 2;
+        unsigned char reserved : 4;
+    } bits;
+} ControlRegister;
+
+// Write your logic here
+int validate_register(ControlRegister *ctrl) {
+    if (ctrl->bits.enable == 1 &&
+        ctrl->bits.priority <= 2 &&
+        ctrl->bits.reserved == 0) {
+            return 1;
+    }
+    return 0;
+}
+
+int main() {
+    ControlRegister ctrl;
+    scanf("%hhx", &ctrl.reg);
+
+    int result = validate_register(&ctrl);
+    printf("%d", result);
+
+    return 0;
+}
