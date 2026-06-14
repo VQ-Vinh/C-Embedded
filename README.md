@@ -61,6 +61,49 @@ Con trỏ, con trỏ hàm, và kỹ thuật dispatch.
 - `double_pointer` — con trỏ cấp 2
 - `void_pointer` — con trỏ void
 - `func_pointer`, `func_pointer_p2` — dispatch table dùng mảng con trỏ hàm, thay thế switch-case
+- `molding` — ép kiểu con trỏ, đọc mảng int dưới dạng byte
+- `find_incr_val` — dùng con trỏ dò tìm 3 số tăng dần liên tiếp
+- `detect_alternating_pattern` — kiểm tra đoạn bộ nhớ có pattern xen kẽ không
+
+### 6. Union — Truy xuất dữ liệu kiểu union
+
+Kỹ thuật dùng `union` để truy xuất cùng vùng nhớ dưới nhiều kiểu — ứng dụng trong giải mã thanh ghi, đóng gói packet, truyền float qua UART.
+
+- `control_register` — union lồng struct bitfield để thao tác thanh ghi điều khiển
+- `union_extract_bytes` — union `uint32_t` với mảng `uint8_t[4]` đọc từng byte
+- `modify_bytes` — đọc/sửa byte cụ thể trong số 32-bit qua union
+- `packet_layout` — union overlay nhiều cấu trúc packet khác nhau
+- `decode_ADC_result` — union giải mã kết quả ADC 12-bit kèm kênh
+- `transmit_float` — union gửi float dạng byte array qua UART
+- `quiz` — câu đố về layout union
+
+### 7. Structures — Cấu trúc & bitfield
+
+Thao tác trên `struct`, bitfield, padding, và đóng gói dữ liệu — mô phỏng driver thiết bị nhúng.
+
+- `pointer_to_struct` — con trỏ tới struct bitfield thanh ghi UART
+- `construct_uart` — xây dựng cấu hình UART từ bitfield
+- `validate_conf` — kiểm tra bit trong struct thanh ghi cấu hình
+- `struct_padding` — hiểu padding và sắp xếp lại trường để tối ưu bộ nhớ
+- `extract_packet_fields` — ánh xạ packet bytes vào struct `#pragma packed`
+- `register_bitfields` — bitfield struct mô phỏng thanh ghi 8-bit
+- `filter_structs` — lọc mảng struct theo điều kiện (cảm biến > ngưỡng)
+
+### 8. Circular Buffer — Hàng đợi vòng
+
+Triển khai cấu trúc hàng đợi vòng (circular buffer / ring buffer), dùng trong xử lý dữ liệu UART/SPI.
+
+- `insert` — chèn dữ liệu vào circular buffer, kiểm tra full/empty
+
+### 10. Searching and Sorting — Tìm kiếm & sắp xếp
+
+Thuật toán cơ bản trên mảng — tìm kiếm tuyến tính, nhị phân, sắp xếp nổi bọt, chọn top K.
+
+- `linear_search` — tìm tuyến tính phần tử đầu tiên trong mảng
+- `binary_search` — tìm nhị phân trên mảng đã sắp xếp
+- `sorting` — sắp xếp nổi bọt (bubble sort)
+- `find_Kth_minmax` — tìm phần tử nhỏ thứ k và lớn thứ k
+- `find_top3` — tìm 3 giá trị lớn nhất
 
 ## Yêu cầu
 
