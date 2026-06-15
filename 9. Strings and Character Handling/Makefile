@@ -1,14 +1,22 @@
 CC = gcc
 CFLAGS = -Wall -Wextra
 
-FORCE:
+Makefile: ;
 
-%: %.c FORCE
-	$(CC) $(CFLAGS) "$<" -o "$@.exe"
+FORCE:
+	@true
+
+%: FORCE
+	$(CC) $(CFLAGS) "$@.c" -o "$@.exe"
 	"./$@.exe"
+	@echo
+
+%.c: FORCE
+	$(CC) $(CFLAGS) "$@" -o "$(@:.c=).exe"
+	"./$(@:.c=).exe"
 	@echo
 
 .PHONY: clean
 
 clean:
-	del /s /q *.exe 2>nul
+	rm -f *.exe 2>nul
